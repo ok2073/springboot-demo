@@ -19,6 +19,7 @@ public class CustomerController {
     List<Customer> getCustomers() {
         return customerService.getCustomer();
     }
+
     @PostMapping
     void createNewCustomer(@RequestBody Customer customer) {
         System.out.println("POST REQUEST...");
@@ -32,7 +33,7 @@ public class CustomerController {
     }
 
     @DeleteMapping(path = "{customerId}")
-    void deleteMapping(@PathVariable ("customerId") Long id) {
+    void deleteMapping(@PathVariable("customerId") Long id) {
         System.out.println("DELETE REQUEST FOR CUSTOMER WITH ID " + id);
     }
 }

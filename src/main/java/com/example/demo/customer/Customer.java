@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Customer {
     private final Long id;
     private final String name;
+    @JsonProperty(access = JsonProperty.Access.READ_WRITE) //A value can be set but not read (in response)
     private final String password;
     Customer(Long id, String name, String password) {
         this.id = id;
