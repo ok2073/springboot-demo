@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
 
-@RequestMapping(path = "api/v2/customer")
+@RequestMapping(path = "api/v2/customers")
 @RestController
 public class CustomerControllerV2 {
     private final CustomerService customerService;
@@ -16,11 +16,14 @@ public class CustomerControllerV2 {
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "all")
+    @GetMapping
     List<Customer> getCustomers() {
-        return Collections.singletonList(
-                new Customer(1L, "James Bond V2", "pwd123")
-        );
+        return customerService.getCustomers();
+    }
+
+    @GetMapping(path = "{customerId}")
+    Customer getCustomer(@PathVariable("customerId") Long id) {
+        return customerService.getCustomer(id);
     }
 
     @PostMapping
