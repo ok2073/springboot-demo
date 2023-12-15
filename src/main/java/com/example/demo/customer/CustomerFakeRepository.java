@@ -8,8 +8,8 @@ public class CustomerFakeRepository implements CustomerRepo{
     @Override
     public List<Customer> getCustomers() {
         return Arrays.asList(
-                new Customer(1L, "James Bond", "pwd123"),
-                new Customer(2L, "Jamila Ahmed", "pwd456")
+                new Customer(1L, "James Bond", "pwd123", "emai@gmail.com"),
+                new Customer(2L, "Jamila Ahmed", "pwd456", "emai@gmail.com")
         );
     }
 }
