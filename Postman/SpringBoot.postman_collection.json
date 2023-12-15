@@ -12,11 +12,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080",
+					"raw": "localhost:8080/api/v1/customer/all",
 					"host": [
 						"localhost"
 					],
-					"port": "8080"
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"all"
+					]
 				}
 			},
 			"response": []
@@ -36,11 +42,16 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080",
+					"raw": "localhost:8080/api/v1/customer",
 					"host": [
 						"localhost"
 					],
-					"port": "8080"
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customer"
+					]
 				}
 			},
 			"response": []
@@ -60,11 +71,16 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080",
+					"raw": "localhost:8080/api/v1/customer",
 					"host": [
 						"localhost"
 					],
-					"port": "8080"
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customer"
+					]
 				}
 			},
 			"response": []
@@ -84,12 +100,15 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/1",
+					"raw": "localhost:8080/api/v1/customer/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
+						"v1",
+						"customer",
 						"1"
 					]
 				}
