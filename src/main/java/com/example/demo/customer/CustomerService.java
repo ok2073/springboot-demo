@@ -1,5 +1,6 @@
 package com.example.demo.customer;
 
+import com.example.demo.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class CustomerService {
                 .stream()
                 .filter(customer -> customer.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("Customer not found"));
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "customer with id " + id +  " not found"));
     }
 }
