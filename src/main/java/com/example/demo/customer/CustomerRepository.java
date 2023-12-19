@@ -1,17 +1,9 @@
 package com.example.demo.customer;
 
-import org.springframework.stereotype.Repository;
-import java.util.Collections;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 //@Repository
 //@Primary
-public class CustomerRepository implements CustomerRepo{
-    @Override
-    public List<Customer> getCustomers() {
-        //TODO connect to real db
-        return Collections.singletonList(
-          new Customer(1L, "TODO. Implement real db", "pwd", "email@gmail.com")
-        );
-    }
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
 }

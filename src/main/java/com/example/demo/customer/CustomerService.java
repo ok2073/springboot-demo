@@ -1,8 +1,6 @@
 package com.example.demo.customer;
 
 import com.example.demo.exception.NotFoundException;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,18 +8,26 @@ import java.util.List;
 @Service
 public class CustomerService {
 
-    private final CustomerRepo customerRepo;
+    private final CustomerRepository customerRepository;
 
     //public CustomerService(@Qualifier("fake") CustomerRepo customerRepo) {
-    public CustomerService(CustomerRepo customerRepo) {
-        this.customerRepo = customerRepo;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     public List<Customer> getCustomers() {
-        return customerRepo.getCustomers();
+        return customerRepository.findAll();
     }
 
     public Customer getCustomer(Long id) {
+        return customerRepository
+                .findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "customer with id " + id +  " not found"));
+    }
+
+    /*public Customer getCustomer(Long id) {
         return getCustomers()
                 .stream()
                 .filter(customer -> customer.getId().equals(id))
@@ -29,5 +35,5 @@ public class CustomerService {
                 .orElseThrow(
                         () -> new NotFoundException(
                                 "customer with id " + id +  " not found"));
-    }
+    }*/
 }
