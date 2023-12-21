@@ -1,6 +1,8 @@
 package com.example.demo.customer;
 
 import com.example.demo.exception.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.List;
 @Service
 public class CustomerService {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
     private final CustomerRepository customerRepository;
 
     //public CustomerService(@Qualifier("fake") CustomerRepo customerRepo) {
@@ -16,6 +19,7 @@ public class CustomerService {
     }
 
     public List<Customer> getCustomers() {
+        LOGGER.info("getCustomers was called");
         return customerRepository.findAll();
     }
 
@@ -23,8 +27,12 @@ public class CustomerService {
         return customerRepository
                 .findById(id)
                 .orElseThrow(
-                        () -> new NotFoundException(
-                                "customer with id " + id +  " not found"));
+                        () -> {
+                            NotFoundException notFoundException = new NotFoundException(
+                                                                "customer with id " + id + " not found");
+                            LOGGER.error("error in getting customer {}", id, notFoundException);
+                            return notFoundException;
+                });
     }
 
     /*public Customer getCustomer(Long id) {
