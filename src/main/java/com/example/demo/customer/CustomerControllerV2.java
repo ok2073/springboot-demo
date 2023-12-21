@@ -1,6 +1,7 @@
 package com.example.demo.customer;
 
 import com.example.demo.exception.ApiRequestException;
+import com.example.demo.infoapp.InfoApp;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +13,17 @@ import java.util.List;
 @RestController
 public class CustomerControllerV2 {
     private final CustomerService customerService;
+    private final InfoApp infoApp;
 
     @Autowired
-    public CustomerControllerV2(CustomerService customerService) {
+    public CustomerControllerV2(CustomerService customerService, InfoApp infoApp) {
         this.customerService = customerService;
+        this.infoApp = infoApp;
     }
 
     @GetMapping
     List<Customer> getCustomers() {
+        System.out.println("InfoApp in CustomerControllerV2 " + infoApp);
         return customerService.getCustomers();
     }
 
