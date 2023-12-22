@@ -1,16 +1,18 @@
 package com.example.demo.infoapp;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "info.application")
+@Data
 public class InfoApp {
     private String name;
     private String description;
     private String version;
 
-    public String getName() {
+   /* public String getName() {
         return name;
     }
 
@@ -41,6 +43,6 @@ public class InfoApp {
 
     public void setVersion(String version) {
         this.version = version;
-    }
+    }*/
 
 }
